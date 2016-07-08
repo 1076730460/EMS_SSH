@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- 指定被struts2处理的请求后缀类型。多个用逗号隔开 -->
+	<constant name="struts.action.extension" value="action,do" />
+	<!-- 当struts.xml改动后，是否重新加载。默认值为false(生产环境下使用),开发阶段最好打开 -->
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.devMode" value="true" />
+	<package name="EMS_SSH" namespace="/" extends="struts-default">
+		<default-action-ref name="index" />
+		<action name="index">
+			<result>/WEB-INF/views/login.jsp</result>
+		</action>
+		<action name="login" class="userAction" method="loginIn">
+		</action>
+		<action name="modifyPassword" class="userAction" method="modifyPassword">
+		</action>
+		<action name="home" class="homeAction">
+			<result>/WEB-INF/views/home.jsp</result>
+		</action>
+		<action name="question" class="questionAction" method="showQuestion">
+			<result name="success">/WEB-INF/views/questionPage/question.jsp</result>
+		</action>
+		<action name="addQuestion" class="questionAction" method="addQuestion">
+		</action>
+		<action name="deletQuestion" class="questionAction" method="deletQuestion">
+		</action>
+		<action name="updateQuestion" class="questionAction" method="updateQuestion">
+		</action>
+		<action name="updateSubmit" class="questionAction" method="updateOrSaveQuestion">
+		
+		</action>
+		<action name="searchData" class="questionAction" method="searchData">
+			<result  name="SUCCESS">/WEB-INF/views/questionPage/question.jsp</result>
+		</action>
+		<action name="automaticParper" class="questionAction" method="automaticParper">
+		</action>
+		<action name="artficalParper" class="questionAction" method="artficalParper">
+		</action>
+		<action name="questionInfoSearch" class="questionAction"
+			method="questionInfoSearch"></action>
+			
+		<!-- parperAction -->
+		<action name="parper" class="parperAction" method="parper">
+			<result name="success">/WEB-INF/views/parperPage/parper.jsp</result>
+		</action>
+		<action name="download" class="parperAction" method="downloadWorld">
+			<result type="stream"></result>
+		</action>
+		<action name="clearParper" class="parperAction" method="clearParper">
+			<result type="redirectAction">parper.action</result>
+		</action>
+		<action name="test" class="parperAction" method="test">
+			<result name="success">/WEB-INF/views/parperPage/test.jsp</result>
+		</action>
+		<action name="submitQuestion" class="parperAction" method="submitQuestion">
+		</action>
+		<!-- postAction -->
+		<action name="savePost" class="postAction" method="savePost"></action>
+		<action name="showPost" class="postAction" method="showPost">
+			<result name="success">/WEB-INF/views/postPage/post.jsp</result>
+		</action>
+		<action name="delPost" class="postAction" method="delPost">
+		</action>
+		<action name="saveType" class="typeAction" method="saveType"></action>
+		<action name="showType" class="typeAction" method="showType">
+			<result name="success">/WEB-INF/views/typePage/type.jsp</result>
+		</action>
+		<action name="delType" class="typeAction" method="delType"></action>
+	</package>
+</struts>
